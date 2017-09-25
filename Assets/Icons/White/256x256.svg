@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256">
+	<g transform="translate(0,48)">
+		<rect x="0" y="0" width="256" height="160" fill="#ffffff" mask="url(#mask0)" />
+		<mask id="mask0" fill="#ffffff">
+			<g>
+				<rect x="0" y="0" width="256" height="160" fill="#ffffff" />
+				<rect x="16" y="16" width="224" height="128" />
+			</g>
+		</mask>
+		<g transform="translate(24,24)">
+			<rect x="0" y="0" width="208" height="112" fill="#ffffff" mask="url(#mask1)" />
+			<mask id="mask1" fill="#ffffff">
+				<g>
+					<rect x="0" y="0" width="208" height="112" fill="#ffffff" />
+					<rect x="16" y="16" width="176" height="80" />
+					<rect x="0" y="32" width="208" height="48" />
+					<rect x="32" y="0" width="144" height="112" />
+				</g>
+			</mask>
+		</g>
+	</g>
+</svg>

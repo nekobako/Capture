@@ -1,0 +1,26 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Capture.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ModifierKeys" Type="System.Windows.Input.ModifierKeys" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ModifierKeys&gt;Alt&lt;/ModifierKeys&gt;</Value>
+    </Setting>
+    <Setting Name="Key" Type="System.Windows.Input.Key" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;Key&gt;Snapshot&lt;/Key&gt;</Value>
+    </Setting>
+    <Setting Name="IncludeFrame" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DirectoryName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%USERPROFILE%\Pictures\Capture\{WindowTitle}</Value>
+    </Setting>
+    <Setting Name="FileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{md5}</Value>
+    </Setting>
+    <Setting Name="FileFormat" Type="Capture.Screenshot.FileFormat" Scope="User">
+      <Value Profile="(Default)">Png</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

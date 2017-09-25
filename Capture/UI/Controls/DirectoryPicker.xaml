@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Capture.UI.Controls.DirectoryPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:metro="http://schemes.grabacr.net/winfx/2014/controls">
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <metro:PromptTextBox Grid.Column="0"
+                                     Margin="0,0,4,0"
+                                     Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=Directory}"
+                                     Prompt="" />
+                <Button Grid.Column="1"
+                        Click="referenceButtonClicked">
+                    <ContentPresenter />
+                </Button>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

@@ -1,0 +1,197 @@
+﻿<metro:MetroWindow x:Class="Capture.UI.Windows.SettingsWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:metro="http://schemes.grabacr.net/winfx/2014/controls"
+                   xmlns:properties="clr-namespace:Capture.Properties"
+                   xmlns:controls="clr-namespace:Capture.UI.Controls"
+                   Title="{x:Static properties:Resources.SettingsWindow_Title}"
+                   Style="{StaticResource WindowStyle}"
+                   Closed="closed">
+    <DockPanel>
+        <controls:WindowChrome DockPanel.Dock="Top"
+                               metro:MetroWindow.IsCaptionBar="True" />
+        <ScrollViewer>
+            <StackPanel Style="{StaticResource ContentStyle}">
+                <StackPanel Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_Hotkey}"
+                               Style="{StaticResource HeaderStyle}" />
+                    <StackPanel Orientation="Horizontal"
+                                Style="{StaticResource ParagraphStyle}">
+                        <controls:FlagsSelector SelectionMode="Multiple"
+                                                ItemsSource="{Binding ModifierKeys}"
+                                                DisplayMemberPath="Value"
+                                                FlagPath="Key"
+                                                SelectedFlags="{Binding Source={x:Static properties:Settings.Default}, Path=ModifierKeys}">
+                            <controls:FlagsSelector.Template>
+                                <ControlTemplate TargetType="controls:FlagsSelector">
+                                    <StackPanel Orientation="Horizontal"
+                                                IsItemsHost="True" />
+                                </ControlTemplate>
+                            </controls:FlagsSelector.Template>
+                            <controls:FlagsSelector.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <CheckBox IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}">
+                                                        <ContentPresenter />
+                                                    </CheckBox>
+                                                    <TextBlock Margin="4,-1,4,0"
+                                                               VerticalAlignment="Center"
+                                                               Text="+" />
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </controls:FlagsSelector.ItemContainerStyle>
+                        </controls:FlagsSelector>
+                        <metro:PromptComboBox MinWidth="150"
+                                              Prompt=""
+                                              ItemsSource="{Binding Keys}"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key"
+                                              SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Key}" />
+                    </StackPanel>
+                </StackPanel>
+                <Border Style="{StaticResource SectionSeparatorStyle}" />
+                <StackPanel Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_Image}"
+                               Style="{StaticResource HeaderStyle}" />
+                    <CheckBox Content="{x:Static properties:Resources.SettingsWindow_CheckBox_IncludeWindowFrame}"
+                              IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=IncludeFrame}"
+                              Style="{StaticResource ParagraphStyle}" />
+                </StackPanel>
+                <Border Style="{StaticResource SectionSeparatorStyle}" />
+                <StackPanel Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_DirectoryName}"
+                               Style="{StaticResource HeaderStyle}" />
+                    <controls:DirectoryPicker Directory="{Binding Source={x:Static properties:Settings.Default}, Path=DirectoryName, UpdateSourceTrigger=PropertyChanged}"
+                                              Content="{x:Static properties:Resources.SettingsWindow_DirectoryPicker_Reference}"
+                                              Style="{StaticResource ParagraphStyle}" />
+                    <Border Style="{StaticResource ParagraphSeparatorStyle}" />
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Note_PathTemplateTagsAvailable}"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource ParagraphStyle}" />
+                </StackPanel>
+                <Border Style="{StaticResource SectionSeparatorStyle}" />
+                <StackPanel Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_FileNameAndFormat}"
+                               Style="{StaticResource HeaderStyle}" />
+                    <Grid Style="{StaticResource ParagraphStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <metro:PromptTextBox Grid.Column="0"
+                                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=FileName, UpdateSourceTrigger=PropertyChanged}"
+                                             Prompt="" />
+                        <TextBlock Grid.Column="1"
+                                   Margin="4,3"
+                                   Text="." />
+                        <metro:PromptComboBox Grid.Column="2"
+                                              MinWidth="50"
+                                              Prompt=""
+                                              ItemsSource="{Binding FileFormats}"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key"
+                                              SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=FileFormat}" />
+                    </Grid>
+                    <Border Style="{StaticResource ParagraphSeparatorStyle}" />
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Note_PathTemplateTagsAvailable}"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource ParagraphStyle}" />
+                </StackPanel>
+                <Border Style="{StaticResource SectionSeparatorStyle}" />
+                <StackPanel Grid.IsSharedSizeScope="True"
+                            Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_PathTemplateTags}"
+                               Style="{StaticResource HeaderStyle}" />
+                    <StackPanel Style="{StaticResource ParagraphStyle}">
+                        <ItemsControl Margin="0,0,0,-2"
+                                      Style="{StaticResource ParagraphStyle}"
+                                      ItemsSource="{Binding CaseSensitivePathTemplateTags}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition SharedSizeGroup="Tag" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition SharedSizeGroup="UpperCaseTag" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition SharedSizeGroup="LowerCaseTag" />
+                                            </Grid.ColumnDefinitions>
+                                            <controls:AutoSelectTextBox Grid.Column="0"
+                                                                        HorizontalContentAlignment="Center"
+                                                                        Text="{Binding UpperCaseTag, Mode=OneTime}"
+                                                                        Prompt=""
+                                                                        IsReadOnly="True" />
+                                            <TextBlock Grid.Column="1"
+                                                       Margin="4,3"
+                                                       Text="/" />
+                                            <controls:AutoSelectTextBox Grid.Column="2"
+                                                                        HorizontalContentAlignment="Center"
+                                                                        Text="{Binding LowerCaseTag, Mode=OneTime}"
+                                                                        Prompt=""
+                                                                        IsReadOnly="True" />
+                                        </Grid>
+                                        <TextBlock Grid.Column="1"
+                                                   Margin="4,3"
+                                                   Text=":" />
+                                        <TextBlock Grid.Column="2"
+                                                   Margin="0,3"
+                                                   Text="{Binding Description, Mode=OneTime}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Border Height="2" />
+                        <ItemsControl Margin="0,0,0,-2"
+                                      ItemsSource="{Binding CaseInsensitivePathTemplateTags}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition SharedSizeGroup="Tag" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <controls:AutoSelectTextBox Grid.Column="0"
+                                                                    HorizontalContentAlignment="Center"
+                                                                    Text="{Binding Tag, Mode=OneTime}"
+                                                                    Prompt=""
+                                                                    IsReadOnly="True" />
+                                        <TextBlock Grid.Column="1"
+                                                   Margin="4,3"
+                                                   Text=":" />
+                                        <TextBlock Grid.Column="2"
+                                                   Margin="0,3"
+                                                   Text="{Binding Description, Mode=OneTime}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    <Border Style="{StaticResource ParagraphSeparatorStyle}" />
+                    <TextBlock TextWrapping="Wrap"
+                               Style="{StaticResource ParagraphStyle}">
+                        <Run Text="{x:Static properties:Resources.SettingsWindow_Note_DateAndTimeFormatStrings_Text0}" />
+                        <Hyperlink NavigateUri="{Binding Source={x:Static properties:Resources.SettingsWindow_Note_DateAndTimeFormatStrings_LinkUrl0}}"
+                                   RequestNavigate="hyperlinkRequestNavigate">
+                            <Run Text="{x:Static properties:Resources.SettingsWindow_Note_DateAndTimeFormatStrings_LinkText0}" />
+                        </Hyperlink>
+                        <Run Text="{x:Static properties:Resources.SettingsWindow_Note_DateAndTimeFormatStrings_Text1}" />
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</metro:MetroWindow>
