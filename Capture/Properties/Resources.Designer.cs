@@ -88,15 +88,6 @@ namespace Capture.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Include window frame.
-        /// </summary>
-        public static string SettingsWindow_CheckBox_IncludeWindowFrame {
-            get {
-                return ResourceManager.GetString("SettingsWindow_CheckBox_IncludeWindowFrame", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Random GUID (upper case / lower case).
         /// </summary>
         public static string SettingsWindow_Description_Guid {
@@ -178,20 +169,29 @@ namespace Capture.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image.
-        /// </summary>
-        public static string SettingsWindow_Header_Image {
-            get {
-                return ResourceManager.GetString("SettingsWindow_Header_Image", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Template tags (reference).
         /// </summary>
         public static string SettingsWindow_Header_PathTemplateTags {
             get {
                 return ResourceManager.GetString("SettingsWindow_Header_PathTemplateTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture active window.
+        /// </summary>
+        public static string SettingsWindow_Hotkey_CaptureActiveWindow {
+            get {
+                return ResourceManager.GetString("SettingsWindow_Hotkey_CaptureActiveWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture active window with frame.
+        /// </summary>
+        public static string SettingsWindow_Hotkey_CaptureActiveWindowWithFrame {
+            get {
+                return ResourceManager.GetString("SettingsWindow_Hotkey_CaptureActiveWindowWithFrame", resourceCulture);
             }
         }
         

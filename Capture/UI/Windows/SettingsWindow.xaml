@@ -15,55 +15,38 @@
                 <StackPanel Style="{StaticResource SectionStyle}">
                     <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_Hotkey}"
                                Style="{StaticResource HeaderStyle}" />
-                    <StackPanel Orientation="Horizontal"
-                                Style="{StaticResource ParagraphStyle}">
-                        <controls:FlagsSelector SelectionMode="Multiple"
-                                                ItemsSource="{Binding ModifierKeys}"
-                                                DisplayMemberPath="Value"
-                                                FlagPath="Key"
-                                                SelectedFlags="{Binding Source={x:Static properties:Settings.Default}, Path=ModifierKeys}">
-                            <controls:FlagsSelector.Template>
-                                <ControlTemplate TargetType="controls:FlagsSelector">
-                                    <StackPanel Orientation="Horizontal"
-                                                IsItemsHost="True" />
-                                </ControlTemplate>
-                            </controls:FlagsSelector.Template>
-                            <controls:FlagsSelector.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="Focusable"
-                                            Value="False" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <CheckBox IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}">
-                                                        <ContentPresenter />
-                                                    </CheckBox>
-                                                    <TextBlock Margin="4,-1,4,0"
-                                                               VerticalAlignment="Center"
-                                                               Text="+" />
-                                                </StackPanel>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </controls:FlagsSelector.ItemContainerStyle>
-                        </controls:FlagsSelector>
-                        <metro:PromptComboBox MinWidth="150"
-                                              Prompt=""
-                                              ItemsSource="{Binding Keys}"
-                                              DisplayMemberPath="Value"
-                                              SelectedValuePath="Key"
-                                              SelectedValue="{Binding Source={x:Static properties:Settings.Default}, Path=Key}" />
-                    </StackPanel>
-                </StackPanel>
-                <Border Style="{StaticResource SectionSeparatorStyle}" />
-                <StackPanel Style="{StaticResource SectionStyle}">
-                    <TextBlock Text="{x:Static properties:Resources.SettingsWindow_Header_Image}"
-                               Style="{StaticResource HeaderStyle}" />
-                    <CheckBox Content="{x:Static properties:Resources.SettingsWindow_CheckBox_IncludeWindowFrame}"
-                              IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=IncludeFrame}"
-                              Style="{StaticResource ParagraphStyle}" />
+                    <Grid Style="{StaticResource ParagraphStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   Text="1." />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="0"
+                                   Text="{x:Static properties:Resources.SettingsWindow_Hotkey_CaptureActiveWindow}" />
+                        <controls:HotkeyPicker Grid.Column="1"
+                                               Grid.Row="1"
+                                               ModifierKeys="{Binding Source={x:Static properties:Settings.Default}, Path=Hotkey_CaptureActiveWindow_ModifierKeys}"
+                                               Key="{Binding Source={x:Static properties:Settings.Default}, Path=Hotkey_CaptureActiveWindow_Key}" />
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="2"
+                                   Text="2." />
+                        <TextBlock Grid.Column="1"
+                                   Grid.Row="2"
+                                   Text="{x:Static properties:Resources.SettingsWindow_Hotkey_CaptureActiveWindowWithFrame}" />
+                        <controls:HotkeyPicker Grid.Column="1"
+                                               Grid.Row="3"
+                                               ModifierKeys="{Binding Source={x:Static properties:Settings.Default}, Path=Hotkey_CaptureActiveWindowWithFrame_ModifierKeys}"
+                                               Key="{Binding Source={x:Static properties:Settings.Default}, Path=Hotkey_CaptureActiveWindowWithFrame_Key}" />
+                    </Grid>
                 </StackPanel>
                 <Border Style="{StaticResource SectionSeparatorStyle}" />
                 <StackPanel Style="{StaticResource SectionStyle}">

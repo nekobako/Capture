@@ -26,36 +26,49 @@ namespace Capture.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ModifierKeys>Alt</ModifierKeys>")]
-        public global::System.Windows.Input.ModifierKeys ModifierKeys {
+        public global::System.Windows.Input.ModifierKeys Hotkey_CaptureActiveWindow_ModifierKeys {
             get {
-                return ((global::System.Windows.Input.ModifierKeys)(this["ModifierKeys"]));
+                return ((global::System.Windows.Input.ModifierKeys)(this["Hotkey_CaptureActiveWindow_ModifierKeys"]));
             }
             set {
-                this["ModifierKeys"] = value;
+                this["Hotkey_CaptureActiveWindow_ModifierKeys"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<Key>Snapshot</Key>")]
-        public global::System.Windows.Input.Key Key {
+        public global::System.Windows.Input.Key Hotkey_CaptureActiveWindow_Key {
             get {
-                return ((global::System.Windows.Input.Key)(this["Key"]));
+                return ((global::System.Windows.Input.Key)(this["Hotkey_CaptureActiveWindow_Key"]));
             }
             set {
-                this["Key"] = value;
+                this["Hotkey_CaptureActiveWindow_Key"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool IncludeFrame {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ModifierKeys>Alt Control</ModifierKeys>" +
+            "")]
+        public global::System.Windows.Input.ModifierKeys Hotkey_CaptureActiveWindowWithFrame_ModifierKeys {
             get {
-                return ((bool)(this["IncludeFrame"]));
+                return ((global::System.Windows.Input.ModifierKeys)(this["Hotkey_CaptureActiveWindowWithFrame_ModifierKeys"]));
             }
             set {
-                this["IncludeFrame"] = value;
+                this["Hotkey_CaptureActiveWindowWithFrame_ModifierKeys"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<Key>Snapshot</Key>")]
+        public global::System.Windows.Input.Key Hotkey_CaptureActiveWindowWithFrame_Key {
+            get {
+                return ((global::System.Windows.Input.Key)(this["Hotkey_CaptureActiveWindowWithFrame_Key"]));
+            }
+            set {
+                this["Hotkey_CaptureActiveWindowWithFrame_Key"] = value;
             }
         }
         
