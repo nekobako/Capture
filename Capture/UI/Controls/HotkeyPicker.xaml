@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Capture.UI.Controls.HotkeyPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:metro="http://schemes.grabacr.net/winfx/2014/controls"
+             xmlns:controls="clr-namespace:Capture.UI.Controls">
+    <StackPanel Orientation="Horizontal">
+        <controls:FlagsSelector x:Name="modifierKeysFlagsSelector"
+                                SelectionMode="Multiple"
+                                DisplayMemberPath="Value"
+                                FlagPath="Key"
+                                SelectedFlags="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=ModifierKeys}">
+            <controls:FlagsSelector.Template>
+                <ControlTemplate TargetType="controls:FlagsSelector">
+                    <StackPanel Orientation="Horizontal"
+                                IsItemsHost="True" />
+                </ControlTemplate>
+            </controls:FlagsSelector.Template>
+            <controls:FlagsSelector.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Focusable"
+                            Value="False" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}">
+                                        <ContentPresenter />
+                                    </CheckBox>
+                                    <TextBlock Margin="4,-1,4,0"
+                                               VerticalAlignment="Center"
+                                               Text="+" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </controls:FlagsSelector.ItemContainerStyle>
+        </controls:FlagsSelector>
+        <metro:PromptComboBox x:Name="keyComboBox"
+                              MinWidth="150"
+                              Prompt=""
+                              ItemsSource="{Binding Keys}"
+                              DisplayMemberPath="Value"
+                              SelectedValuePath="Key"
+                              SelectedValue="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=Key}" />
+    </StackPanel>
+</UserControl>
