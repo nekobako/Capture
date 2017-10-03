@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -34,9 +35,9 @@ namespace Capture {
 
 		private readonly Toast failureToast = new Toast(R.Toast_Title_Failed, string.Empty);
 
-		private Hotkey hotkey;
-
 		private TaskTrayIcon taskTrayIcon;
+
+		private IReadOnlyList<Hotkey> hotkeys;
 
 
 		public App() : base() {
@@ -47,7 +48,6 @@ namespace Capture {
 
 			ThemeService.Current.Register(this, Theme.Windows, Accent.Windows);
 
-			this.hotkey = new Hotkey(S.Default.ModifierKeys, S.Default.Key, this.hotkeyPressed);
 			this.taskTrayIcon = new TaskTrayIcon() {
 				Items = new[] {
 					new TaskTrayIconItem(R.TaskTrayIconItem_Settings, WindowHelper.ShowOrActivate<SettingsWindow>),
@@ -55,6 +55,8 @@ namespace Capture {
 				},
 				Icon = IconHelper.LoadIcon("Assets/White.ico")
 			};
+
+			this.registerHotkeys();
 
 			S.Default.PropertyChanged += this.settingsPropertyChanged;
 		}
@@ -64,16 +66,17 @@ namespace Capture {
 
 			S.Default.PropertyChanged -= this.settingsPropertyChanged;
 
-			this.hotkey.Dispose();
+			this.unregisterHotkeys();
+
 			this.taskTrayIcon.Dispose();
 		}
 
-		private void hotkeyPressed() {
+		private void hotkeyPressed(Func<Screenshot> capture) {
 			this.successToast.Hide();
 			this.failureToast.Hide();
 
 			try {
-				using(var screenshot = Screenshot.CaptureActiveWindow(S.Default.IncludeFrame)) {
+				using(var screenshot = capture()) {
 					this.successToast.ImagePath = screenshot.Save(S.Default.DirectoryName, S.Default.FileName, S.Default.FileFormat);
 				}
 
@@ -102,14 +105,28 @@ namespace Capture {
 		}
 
 		private void settingsPropertyChanged(object sender, PropertyChangedEventArgs args) {
-			switch(args.PropertyName) {
-				case nameof(S.Default.ModifierKeys):
-					this.hotkey.ModifierKeys = S.Default.ModifierKeys;
-					break;
-				case nameof(S.Default.Key):
-					this.hotkey.Key = S.Default.Key;
-					break;
+			this.registerHotkeys();
+		}
+
+		private void registerHotkeys() {
+			this.unregisterHotkeys();
+
+			this.hotkeys = new List<Hotkey>() {
+				new Hotkey(S.Default.Hotkey_CaptureActiveWindow_ModifierKeys, S.Default.Hotkey_CaptureActiveWindow_Key, () => this.hotkeyPressed(() => Screenshot.CaptureActiveWindow(false))),
+				new Hotkey(S.Default.Hotkey_CaptureActiveWindowWithFrame_ModifierKeys, S.Default.Hotkey_CaptureActiveWindowWithFrame_Key, () => this.hotkeyPressed(() => Screenshot.CaptureActiveWindow(true)))
+			};
+		}
+
+		private void unregisterHotkeys() {
+			if(this.hotkeys == null) {
+				return;
 			}
+
+			foreach(var hotkey in this.hotkeys) {
+				hotkey.Dispose();
+			}
+
+			this.hotkeys = null;
 		}
 	}
 }

@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
 using Capture.Extensions;
 
 namespace Capture.UI.Bindings {
 	public class SettingsWindowViewModel : DependencyObject {
-		public IReadOnlyDictionary<ModifierKeys, string> ModifierKeys { get; }
-
-		public IReadOnlyDictionary<Key, string> Keys { get; }
-
 		public IReadOnlyDictionary<Screenshot.FileFormat, string> FileFormats { get; }
 
 		public IReadOnlyCollection<object> CaseSensitivePathTemplateTags { get; }
@@ -19,17 +14,6 @@ namespace Capture.UI.Bindings {
 
 
 		public SettingsWindowViewModel() : base() {
-			this.ModifierKeys = Enum.GetNames(typeof(ModifierKeys))
-				.Select(x => new { Name = x, Value = x.ToEnum<ModifierKeys>() })
-				.Where(x => x.Value != 0)
-				.ToDictionary(x => x.Value, x => x.Name);
-
-			this.Keys = Enum.GetNames(typeof(Key))
-				.Select(x => new { Name = x, Value = x.ToEnum<Key>() })
-				.Where(x => x.Value != 0)
-				.GroupBy(x => x.Value, x => x.Name)
-				.ToDictionary(x => x.Key, x => string.Join(" / ", x));
-
 			this.FileFormats = Enum.GetNames(typeof(Screenshot.FileFormat))
 				.ToDictionary(x => x.ToEnum<Screenshot.FileFormat>(), x => x.ToLower());
 

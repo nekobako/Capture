@@ -88,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\Controls\HotkeyPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Controls\WindowChrome.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +117,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\Controls\FlagsSelector.cs" />
+    <Compile Include="UI\Controls\HotkeyPicker.xaml.cs">
+      <DependentUpon>HotkeyPicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UI\Controls\TaskTrayIcon.cs" />
     <Compile Include="UI\Controls\Toast.cs" />
     <Compile Include="UI\Controls\WindowChrome.xaml.cs">

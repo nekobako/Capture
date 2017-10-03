@@ -126,9 +126,6 @@
   <data name="Exception_FailedToMeasureWindow" xml:space="preserve">
     <value>Failed to measure window.</value>
   </data>
-  <data name="SettingsWindow_CheckBox_IncludeWindowFrame" xml:space="preserve">
-    <value>Include window frame</value>
-  </data>
   <data name="SettingsWindow_Description_Guid" xml:space="preserve">
     <value>Random GUID (upper case / lower case)</value>
   </data>
@@ -156,11 +153,14 @@
   <data name="SettingsWindow_Header_Hotkey" xml:space="preserve">
     <value>Hotkey</value>
   </data>
-  <data name="SettingsWindow_Header_Image" xml:space="preserve">
-    <value>Image</value>
-  </data>
   <data name="SettingsWindow_Header_PathTemplateTags" xml:space="preserve">
     <value>Template tags (reference)</value>
+  </data>
+  <data name="SettingsWindow_Hotkey_CaptureActiveWindow" xml:space="preserve">
+    <value>Capture active window</value>
+  </data>
+  <data name="SettingsWindow_Hotkey_CaptureActiveWindowWithFrame" xml:space="preserve">
+    <value>Capture active window with frame</value>
   </data>
   <data name="SettingsWindow_Note_DateAndTimeFormatStrings_LinkText0" xml:space="preserve">
     <value>{Custom Date and Time Format Strings in .NET Framework}</value>

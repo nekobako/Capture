@@ -126,9 +126,6 @@
   <data name="Exception_FailedToMeasureWindow" xml:space="preserve">
     <value>ウィンドウを採寸できませんでした。</value>
   </data>
-  <data name="SettingsWindow_CheckBox_IncludeWindowFrame" xml:space="preserve">
-    <value>ウィンドウの枠を含める</value>
-  </data>
   <data name="SettingsWindow_Description_Guid" xml:space="preserve">
     <value>ランダムな GUID (大文字 / 小文字)</value>
   </data>
@@ -156,11 +153,14 @@
   <data name="SettingsWindow_Header_Hotkey" xml:space="preserve">
     <value>ホットキー</value>
   </data>
-  <data name="SettingsWindow_Header_Image" xml:space="preserve">
-    <value>画像</value>
-  </data>
   <data name="SettingsWindow_Header_PathTemplateTags" xml:space="preserve">
     <value>テンプレートタグ (参考)</value>
+  </data>
+  <data name="SettingsWindow_Hotkey_CaptureActiveWindow" xml:space="preserve">
+    <value>アクティブなウィンドウをキャプチャする</value>
+  </data>
+  <data name="SettingsWindow_Hotkey_CaptureActiveWindowWithFrame" xml:space="preserve">
+    <value>アクティブなウィンドウを枠付きでをキャプチャする</value>
   </data>
   <data name="SettingsWindow_Note_DateAndTimeFormatStrings_LinkText0" xml:space="preserve">
     <value>{.NET Framework におけるカスタム日時書式指定文字列}</value>
