@@ -273,7 +273,6 @@ namespace Capture {
 			this.Image.Dispose();
 		}
 
-
 		private ImageFormat getImageFormat(FileFormat fileFormat) {
 			switch(fileFormat) {
 				case FileFormat.Bmp:
