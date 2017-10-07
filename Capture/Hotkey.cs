@@ -25,9 +25,9 @@ namespace Capture {
 		}
 
 
-		private static readonly int idMin = 0x0001;
+		private const int idMin = 0x0001;
 
-		private static readonly int idMax = 0xBFFF;
+		private const int idMax = 0xBFFF;
 
 		private static readonly HashSet<int> ids = new HashSet<int>();
 
